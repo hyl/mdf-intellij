@@ -1,2 +1,2 @@
 # mdf-intellij
-InteliJ language plugin for MDF
+InteliJ language plugin for [MDF](http://www.github.com/alandoherty/mdf).
