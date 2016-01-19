@@ -1,0 +1,22 @@
+{
+    parserClass="com.karambyte.mdf.MdfParser"
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="Mdf"
+    psiImplClassSuffix="Impl"
+    psiPackage="com.karambyte.psi"
+    psiImplPackage="com.karambyte.psi.impl"
+
+    elementTypeHolderClass="com.karambyte.psi.MdfTypes"
+    elementTypeClass="com.karambyte.psi.MdfElementType"
+    tokenTypeClass="com.karambyte.psi.MdfTokenType"
+
+    psiImplUtilClass="com.karambyte.psi.impl.MdfPsiImplUtil"
+}
+
+mdfFile ::= item_*
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.karambyte.psi.impl.MdfNamedElementImpl"
+    implements="com.karambyte.psi.MdfNamedElement" methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
